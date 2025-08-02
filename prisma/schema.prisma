@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql" // Qual banco utilizando para a aplicação
+  url      = env("DATABASE_URL")
+}
+
+model Pessoa {
+  id               String     @id @default(uuid())
+  nome             String
+  genero           String?
+  email            String?    @unique
+  senha            String?
+  data_nascimento  DateTime
+  naturalidade     String?
+  nacionalidade    String?
+  cpf              String     @unique
+  data_criacao     DateTime   @default(now())
+  data_atualizacao DateTime   @updatedAt
+  Endereco         Endereco[]
+}
+
+model Endereco {
+  id          String  @id @default(uuid())
+  rua         String
+  numero      String
+  bairro      String
+  cidade      String
+  estado      String
+  cep         String
+  complemento String?
+
+  pessoaId String
+  pessoa   Pessoa @relation(fields: [pessoaId], references: [id])
+
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @updatedAt
+}
