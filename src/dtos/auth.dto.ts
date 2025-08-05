@@ -6,6 +6,7 @@ export interface SignInDTO {
 export interface AutenticaoUserResponse {
   userId: string;
   email: string;
+  nome?: string;
 }
 
 export interface RequestUsuario {

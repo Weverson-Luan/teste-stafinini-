@@ -39,12 +39,29 @@ export class AuthService {
       throw new UnauthorizedException("E-mail ou senha inválidos.");
     }
 
-    const payload = { sub: user.id, email: user.email };
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      nome: user.nome,
+      genero: user.genero,
+      senha: user.senha,
+      data_nascimento: user.data_nascimento,
+      naturalidade: user.naturalidade,
+      nacionalidade: user.nacionalidade,
+      telefone: user.telefone,
+      cpf: user.cpf,
+    };
     const token = await this.jwtService.signAsync(payload);
 
     return {
       message: "Login realizado com sucesso!",
       access_token: token,
+      user: {
+        // Retornando dados básicos do usuário na resposta
+        id: user.id,
+        nome: user.nome,
+        email: user.email,
+      },
     };
   }
 }

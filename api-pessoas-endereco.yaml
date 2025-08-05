@@ -1,0 +1,184 @@
+type: collection.insomnia.rest/5.0
+name: api-pessoas-enderecos
+meta:
+  id: wrk_501b039a44df4d319bd08ae863382da3
+  created: 1754243120302
+  modified: 1754243120302
+collection:
+  - name: Pessoas
+    meta:
+      id: fld_44dd5227786a4daeaa8fc434e2811e5d
+      created: 1754244439540
+      modified: 1754244439540
+      sortKey: -1754244439540
+    children:
+      - url: http://localhost:3000/pessoa
+        name: Criar Pessoa
+        meta:
+          id: req_d9044294500e4eeda15dd5603457e467
+          created: 1754244456691
+          modified: 1754246509856
+          isPrivate: false
+          sortKey: -1754244456691
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "nome": "Fulano de Tal",
+              "genero": "masculino",
+              "email": "fulano@example.com",
+              "senha": "senha123",
+              "data_nascimento": "1990-01-01",
+              "naturalidade": "São Paulo",
+              "nacionalidade": "Brasileira",
+              "cpf": "123.456.789-00"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+
+      - url: http://localhost:3000/pessoas
+        name: Atualizar Pessoa
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4ace8
+          created: 1754245850857
+          modified: 1754248670914
+          isPrivate: false
+          sortKey: -1753571659565.5
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": "ID_DA_PESSOA",
+              "nome": "Novo Nome",
+              "email": "novo@email.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+      - url: http://localhost:3000/pessoas/ID_DA_PESSOA
+        name: Excluir Pessoa
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4ace9
+          created: 1754245850857
+          modified: 1754248670914
+          isPrivate: false
+          sortKey: -1753571659565.6
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+      - url: http://localhost:3000/pessoas/me
+        name: Perfil Pessoal
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4acf0
+          created: 1754245850857
+          modified: 1754248670914
+          isPrivate: false
+          sortKey: -1753571659565.7
+        method: GET
+        headers:
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+  - name: Endereços
+    meta:
+      id: fld_44dd5227786a4daeaa8fc434e2811e5e
+      created: 1754244439541
+      modified: 1754244439541
+      sortKey: -1754244439541
+    children:
+      - url: http://localhost:3000/enderecos
+        name: Criar Endereço
+        meta:
+          id: req_d9044294500e4eeda15dd5603457e468
+          created: 1754244456692
+          modified: 1754246509857
+          isPrivate: false
+          sortKey: -1754244456692
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "rua": "Rua das Flores",
+              "numero": "123",
+              "bairro": "Centro",
+              "cidade": "São Paulo",
+              "estado": "SP",
+              "cep": "01001000",
+              "complemento": "Apto 101",
+              "pessoaId": "ID_DA_PESSOA"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+
+      - url: http://localhost:3000/enderecos
+        name: Atualizar Endereço
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4acf1
+          created: 1754245850858
+          modified: 1754248670915
+          isPrivate: false
+          sortKey: -1753571659565.8
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": "ID_DO_ENDERECO",
+              "rua": "Nova Rua",
+              "numero": "456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+      - url: http://localhost:3000/enderecos/ID_DO_ENDERECO
+        name: Excluir Endereço
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4acf2
+          created: 1754245850859
+          modified: 1754248670916
+          isPrivate: false
+          sortKey: -1753571659565.9
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+      - url: http://localhost:3000/enderecos/ID_DO_ENDERECO
+        name: Buscar Endereço
+        meta:
+          id: req_00bb729c95aa4c709bd10d12dcd4acf3
+          created: 1754245850860
+          modified: 1754248670917
+          isPrivate: false
+          sortKey: -1753571659566.0
+        method: GET
+        headers:
+          - name: Authorization
+            value: "Bearer SEU_TOKEN_JWT"
+
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7f23f37bc88926d3ce47df33a888e842a356a34f
+    created: 1754243120306
+    modified: 1754243120306
+environments:
+  name: Base Environment
+  meta:
+    id: env_7f23f37bc88926d3ce47df33a888e842a356a34f
+    created: 1754243120305
+    modified: 1754243120305
+    isPrivate: false

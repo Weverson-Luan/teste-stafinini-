@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // Qual banco utilizando para a aplicação
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -17,6 +17,7 @@ model Pessoa {
   data_nascimento  DateTime
   naturalidade     String?
   nacionalidade    String?
+  telefone         String?
   cpf              String     @unique
   data_criacao     DateTime   @default(now())
   data_atualizacao DateTime   @updatedAt
@@ -24,18 +25,16 @@ model Pessoa {
 }
 
 model Endereco {
-  id          String  @id @default(uuid())
-  rua         String
-  numero      String
-  bairro      String
-  cidade      String
-  estado      String
-  cep         String
-  complemento String?
-
-  pessoaId String
-  pessoa   Pessoa @relation(fields: [pessoaId], references: [id])
-
+  id            String   @id @default(uuid())
+  rua           String
+  numero        String
+  bairro        String
+  cidade        String
+  estado        String
+  cep           String
+  complemento   String?
+  pessoaId      String
   criado_em     DateTime @default(now())
   atualizado_em DateTime @updatedAt
+  pessoa        Pessoa   @relation(fields: [pessoaId], references: [id])
 }
