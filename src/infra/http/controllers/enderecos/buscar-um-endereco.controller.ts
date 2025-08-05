@@ -10,8 +10,6 @@ import {
   UseGuards,
   NotFoundException,
 } from "@nestjs/common";
-import { Controller, Get, HttpCode, Param, UseGuards } from "@nestjs/common";
-import { ApiOperation, ApiResponse, ApiTags, ApiParam } from "@nestjs/swagger";
 
 // domain / services
 import { BuscarEnderecoService } from "src/domain/use-cases/enderecos/buscar-um-endereco.service";

@@ -48,7 +48,7 @@ export class AuthService {
       data_nascimento: user.data_nascimento,
       naturalidade: user.naturalidade,
       nacionalidade: user.nacionalidade,
-      telefone: user.telefone,
+      // telefone: user.telefone,
       cpf: user.cpf,
     };
     const token = await this.jwtService.signAsync(payload);
