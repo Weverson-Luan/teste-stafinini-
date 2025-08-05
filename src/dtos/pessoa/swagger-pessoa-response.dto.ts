@@ -38,7 +38,7 @@ export class PessoaResponseDto {
   createdAt: string;
 }
 
-export class CriarPessoaDto {
+export class CriarPessoaSwagguerDto {
   @IsOptional()
   @IsString()
   @ApiProperty({
@@ -47,7 +47,7 @@ export class CriarPessoaDto {
   })
   id?: string;
 
-  @IsString({ message: "O nome é obrigatório." })
+  @IsString({ message: "O nome é obrigatório!" })
   @ApiProperty({ example: "João da Silva" })
   nome: string;
 
@@ -57,17 +57,17 @@ export class CriarPessoaDto {
   genero?: string;
 
   @IsOptional()
-  @IsEmail({}, { message: "E-mail inválido." })
+  @IsEmail({}, { message: "E-mail inválido!" })
   @ApiProperty({ example: "joao@email.com", required: false })
   email?: string;
 
   @IsOptional()
   @IsString()
-  @Length(6, 20, { message: "A senha deve ter entre 6 e 20 caracteres." })
+  @Length(6, 20, { message: "A senha deve ter entre 6 e 20 caracteres!" })
   @ApiProperty({ example: "123456", required: false })
   senha?: string;
 
-  @IsDateString({}, { message: "Data de nascimento inválida." })
+  @IsDateString({}, { message: "Data de nascimento inválida!" })
   @Transform(({ value }) => new Date(value).toISOString())
   @ApiProperty({ example: "1995-10-20" })
   data_nascimento: string;
@@ -83,7 +83,7 @@ export class CriarPessoaDto {
   nacionalidade?: string;
 
   @Matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/, {
-    message: "CPF inválido. Use o formato 000.000.000-00.",
+    message: "CPF inválido. Use o formato 000.000.000-00!",
   })
   @ApiProperty({ example: "123.456.789-00" })
   cpf: string;

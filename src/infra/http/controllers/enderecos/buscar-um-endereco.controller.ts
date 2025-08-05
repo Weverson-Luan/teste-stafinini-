@@ -2,6 +2,7 @@
  * IMPORTS
  */
 import { Controller, Get, HttpCode, Param, UseGuards } from "@nestjs/common";
+import { ApiOperation, ApiResponse, ApiTags, ApiParam } from "@nestjs/swagger";
 
 // domain / services
 import { BuscarEnderecoService } from "src/domain/use-cases/enderecos/buscar-um-endereco.service";
@@ -9,9 +10,7 @@ import { BuscarEnderecoService } from "src/domain/use-cases/enderecos/buscar-um-
 // infra / use-guards
 import { JwtAuthGuard } from "src/infra/auth/autenticao.guard";
 
-import { ApiOperation, ApiResponse, ApiTags, ApiParam } from "@nestjs/swagger";
-
-@ApiTags("Endereços")
+@ApiTags("Buscar por Endereço")
 @Controller("enderecos")
 export class BuscarEnderecoController {
   constructor(private readonly buscarEnderecoService: BuscarEnderecoService) {}
