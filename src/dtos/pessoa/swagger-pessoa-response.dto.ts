@@ -74,7 +74,7 @@ export class CriarPessoaSwagguerDto {
 
   @IsOptional()
   @IsString()
-  @ApiProperty({ example: "Belo Horizonte", required: false })
+  @ApiProperty({ example: "São Paulo", required: false })
   naturalidade?: string;
 
   @IsOptional()

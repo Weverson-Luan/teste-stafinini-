@@ -8,6 +8,7 @@ import {
   IsDateString,
   Matches,
   Length,
+  IsMobilePhone,
 } from "class-validator";
 
 import { Transform } from "class-transformer";
@@ -27,14 +28,12 @@ export class CriarPessoaDto {
   @IsString()
   genero?: string;
 
-  @IsOptional()
   @IsEmail({}, { message: "E-mail inválido." })
   email?: string;
 
-  @IsOptional()
   @IsString()
   @Length(6, 20, { message: "A senha deve ter entre 6 e 20 caracteres." })
-  senha?: string;
+  senha: string;
 
   @IsDateString({}, { message: "Data de nascimento inválida." })
   @Transform(({ value }) => new Date(value).toISOString())
@@ -52,4 +51,8 @@ export class CriarPessoaDto {
     message: "CPF inválido. Use o formato 000.000.000-00.",
   })
   cpf: string;
+
+  @IsOptional()
+  @IsMobilePhone()
+  telefone?: string;
 }

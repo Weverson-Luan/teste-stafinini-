@@ -9,10 +9,30 @@ import { PrismaService } from "src/infra/database/prisma/prisma.service";
 export class BuscarEnderecoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async execute(id: string) {
-    const endereco = await this.prisma.endereco.findUnique({
-      where: { id },
-    });
+  async execute(id?: string, userId?: string) {
+    let endereco: {
+      id: string;
+      rua: string;
+      numero: string;
+      bairro: string;
+      cidade: string;
+      estado: string;
+      cep: string;
+      complemento: string | null;
+      pessoaId: string;
+      criado_em: Date;
+      atualizado_em: Date;
+    } | null = null;
+
+    if (id) {
+      endereco = await this.prisma.endereco.findUnique({
+        where: { id },
+      });
+    } else if (userId) {
+      endereco = await this.prisma.endereco.findFirst({
+        where: { pessoaId: userId },
+      });
+    }
 
     if (!endereco) {
       throw new NotFoundException("Endereço não encontrado!");

@@ -14,8 +14,8 @@ import {
   PessoaResponseDto,
 } from "src/dtos/pessoa/swagger-pessoa-response.dto";
 
-@ApiTags("Criar Conta")
-@Controller("conta")
+@ApiTags("Criar Conta Pessoa")
+@Controller("pessoa")
 export class CriacaoPessoaController {
   constructor(private pessoaService: CriarPessoaService) {}
 

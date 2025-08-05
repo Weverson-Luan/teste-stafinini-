@@ -8,6 +8,7 @@ CREATE TABLE "Pessoa" (
     "data_nascimento" TIMESTAMP(3) NOT NULL,
     "naturalidade" TEXT,
     "nacionalidade" TEXT,
+    "telefone"  TEXT,
     "cpf" TEXT NOT NULL,
     "data_criacao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "data_atualizacao" TIMESTAMP(3) NOT NULL,

@@ -9,6 +9,7 @@ import {
   IsDateString,
   Matches,
   Length,
+  IsMobilePhone,
 } from "class-validator";
 import { Transform } from "class-transformer";
 
@@ -55,4 +56,8 @@ export class EditarPessoaDto {
     message: "CPF inválido. Use o formato 000.000.000-00.",
   })
   cpf?: string;
+
+  @IsOptional()
+  @IsMobilePhone()
+  telefone?: string;
 }
